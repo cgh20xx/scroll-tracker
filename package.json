@@ -1,0 +1,17 @@
+{
+  "name": "rollup-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/tools.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.0",
+    "rollup": "^3.20.1"
+  }
+}
