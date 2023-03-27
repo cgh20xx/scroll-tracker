@@ -14,12 +14,11 @@
       const scrollTracker = new ScrollTracker({
         target: window.top,
       });
+      scrollTracker.on('start', function (e) {
+        console.log('onStart', e);
+      });
       console.log('scrollTracker:', scrollTracker);
       scrollTracker.start();
-
-      setTimeout(() => {
-        scrollTracker.stop();
-      }, 2000);
     </script>
   </body>
 </html>

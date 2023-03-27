@@ -1,10 +1,4 @@
-// import mitt from 'mitt';
-// console.log(mitt);
 import { EventEmitter } from './eventemitter3';
-// import EventEmitter from '../node_modules/eventemitter3/dist/eventemitter3.esm.js';
-// import EventEmitter from 'https://unpkg.com/eventemitter3@latest/dist/eventemitter3.umd.min.js';
-
-console.log(EventEmitter);
 export default class ScrollTracker extends EventEmitter {
   constructor(settings) {
     super();
@@ -21,6 +15,7 @@ export default class ScrollTracker extends EventEmitter {
   }
 
   start() {
+    this.emit('start', 1);
     this.settings.target.addEventListener('scroll', this._scrollHandler);
   }
 
