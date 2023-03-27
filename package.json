@@ -1,10 +1,11 @@
 {
-  "name": "rollup-test",
-  "version": "1.0.0",
+  "name": "scroll-tracker",
+  "version": "0.1.0",
   "description": "",
-  "main": "src/tools.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
+    "watch": "rollup -c -w",
     "build": "rollup -c"
   },
   "keywords": [],
