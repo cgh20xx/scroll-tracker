@@ -365,33 +365,4 @@ var eventemitter3 = { exports: {} };
 
 var EventEmitter = eventemitter3.exports;
 
-// import mitt from 'mitt';
-// import EventEmitter from '../node_modules/eventemitter3/dist/eventemitter3.esm.js';
-// import EventEmitter from 'https://unpkg.com/eventemitter3@latest/dist/eventemitter3.umd.min.js';
-
-console.log(EventEmitter);
-class ScrollTracker extends EventEmitter {
-  constructor(settings) {
-    super();
-    const defaultSettings = {
-      target: window,
-    };
-    this.settings = Object.assign({}, defaultSettings, settings);
-    console.log(this.settings);
-    this._scrollHandler = this._scrollHandler.bind(this);
-  }
-
-  _scrollHandler() {
-    console.log('scroll ');
-  }
-
-  start() {
-    this.settings.target.addEventListener('scroll', this._scrollHandler);
-  }
-
-  stop() {
-    this.settings.target.removeEventListener('scroll', this._scrollHandler);
-  }
-}
-
-export { ScrollTracker as default };
+export { EventEmitter, EventEmitter as default };

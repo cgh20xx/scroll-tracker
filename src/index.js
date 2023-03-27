@@ -1,5 +1,13 @@
-export default class ScrollTracker {
+// import mitt from 'mitt';
+// console.log(mitt);
+import { EventEmitter } from './eventemitter3';
+// import EventEmitter from '../node_modules/eventemitter3/dist/eventemitter3.esm.js';
+// import EventEmitter from 'https://unpkg.com/eventemitter3@latest/dist/eventemitter3.umd.min.js';
+
+console.log(EventEmitter);
+export default class ScrollTracker extends EventEmitter {
   constructor(settings) {
+    super();
     const defaultSettings = {
       target: window,
     };
@@ -9,7 +17,7 @@ export default class ScrollTracker {
   }
 
   _scrollHandler() {
-    console.log('scroll');
+    console.log('scroll ');
   }
 
   start() {

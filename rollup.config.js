@@ -1,4 +1,5 @@
 import terser from '@rollup/plugin-terser';
+import resolve from '@rollup/plugin-node-resolve';
 
 const config = {
   input: {
@@ -15,9 +16,11 @@ const config = {
       dir: 'dist',
       entryFileNames: '[name].js',
       format: 'iife', // for browser
-      plugins: [terser()], // compress js
     },
   ],
+  plugins: [resolve()],
+  // plugins: [resolve(), terser()],
+  // external: [''],
 };
 
 export default config;
