@@ -1,1 +1,1 @@
-var ScrollTracker=function(){"use strict";return class{constructor(){console.log("ScrollTracker")}}}();
+var ScrollTracker=function(){"use strict";return class{constructor(t){const s={target:window};this.settings=Object.assign({},s,t),console.log(this.settings)}start(){this.settings.target.addEventListener("scroll",(function(t){console.log("scroll")}))}}}();
