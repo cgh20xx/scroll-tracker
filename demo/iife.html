@@ -11,9 +11,15 @@
     <script src="./gen-fake-content.js"></script>
     <script src="../dist/ScrollTracker.js"></script>
     <script>
-      console.log(ScrollTracker);
-      const scrollTracker = new ScrollTracker();
+      const scrollTracker = new ScrollTracker({
+        target: window.top,
+      });
       console.log('scrollTracker:', scrollTracker);
+      scrollTracker.start();
+
+      setTimeout(() => {
+        scrollTracker.stop();
+      }, 2000);
     </script>
   </body>
 </html>

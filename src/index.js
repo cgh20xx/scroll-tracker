@@ -5,12 +5,18 @@ export default class ScrollTracker {
     };
     this.settings = Object.assign({}, defaultSettings, settings);
     console.log(this.settings);
-    // this.target = options
+    this._scrollHandler = this._scrollHandler.bind(this);
+  }
+
+  _scrollHandler() {
+    console.log('scroll');
   }
 
   start() {
-    this.settings.target.addEventListener('scroll', function (e) {
-      console.log('scroll');
-    });
+    this.settings.target.addEventListener('scroll', this._scrollHandler);
+  }
+
+  stop() {
+    this.settings.target.removeEventListener('scroll', this._scrollHandler);
   }
 }
