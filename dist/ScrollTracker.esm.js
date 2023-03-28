@@ -381,11 +381,12 @@ class ScrollTracker extends EventEmitter {
   }
 
   start() {
-    this.emit('start', 1);
+    this.emit('START');
     this.settings.target.addEventListener('scroll', this._scrollHandler);
   }
 
   stop() {
+    this.emit('STOP');
     this.settings.target.removeEventListener('scroll', this._scrollHandler);
   }
 }

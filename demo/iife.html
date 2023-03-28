@@ -12,9 +12,9 @@
     <script src="../dist/ScrollTracker.js"></script>
     <script>
       const scrollTracker = new ScrollTracker({
-        target: window.top,
+        target: window,
       });
-      scrollTracker.on('start', function (e) {
+      scrollTracker.on('START', function (e) {
         console.log('onStart', e);
       });
       console.log('scrollTracker:', scrollTracker);
