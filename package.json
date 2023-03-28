@@ -15,5 +15,8 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "rollup": "^3.20.1"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
   }
 }
