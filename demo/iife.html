@@ -11,25 +11,33 @@
     <script src="./gen-fake-content.js"></script>
     <script src="../dist/ScrollTracker.js"></script>
     <script>
-      const scrollTracker = new ScrollTracker({
+      // 若 mode 為 throttle，不建議 leading 和 trailing 都設為 false
+      const st = new ScrollTracker({
         target: window,
+        mode: 'throttle', // trottle | debounce
+        wait: 1000,
+        options: {
+          leading: true,
+          trailing: false,
+        },
       });
-      scrollTracker.on('start', function (e) {
-        console.log('onStart');
+      st.on('ADD_EVENT', function () {
+        console.log('ADD_EVENT');
       });
 
-      scrollTracker.on('stop', function (e) {
-        console.log('onStop');
+      st.on('REMOVE_EVENT', function () {
+        console.log('REMOVE_EVENT');
       });
 
-      scrollTracker.on('scroll', function (e) {
-        console.log('scroll');
+      st.on('SCROLL', function (e) {
+        console.log('SCROLL', this);
       });
-      console.log('scrollTracker:', scrollTracker);
-      scrollTracker.start();
+      console.log('scrollTracker:', st);
+      st.addEvent();
+
       setTimeout(() => {
-        scrollTracker.stop();
-      }, 2000);
+        st.removeEvent();
+      }, 3000);
     </script>
   </body>
 </html>

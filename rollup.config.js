@@ -10,12 +10,14 @@ const config = {
       dir: 'dist',
       entryFileNames: '[name].esm.js',
       format: 'es', // ES Mdoule
+      sourcemap: true,
     },
     {
       name: 'ScrollTracker', // global name under window
       dir: 'dist',
       entryFileNames: '[name].js',
-      format: 'iife', // for browser
+      format: 'iife', // for browser]
+      sourcemap: true,
     },
   ],
   plugins: [resolve()],

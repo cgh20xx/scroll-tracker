@@ -2,36 +2,43 @@ import { EventEmitter } from './eventemitter3';
 import { throttle, debounce } from 'lodash-es';
 // console.log('throttle:', throttle);
 // console.log('debounce:', debounce);
-
-export default class ScrollTracker extends EventEmitter {
+const modFunc = {
+  throttle,
+  debounce,
+};
+console.log(modFunc);
+class ScrollTracker extends EventEmitter {
+  static aa = 'aaaa';
   constructor(settings) {
     super();
     const defaultSettings = {
       target: window,
+      mode: 'throttle',
+      wait: 0,
     };
     this.settings = Object.assign({}, defaultSettings, settings);
-    console.log(this.settings);
-    // this._scrollHandler = this._scrollHandler.bind(this);
-    this._throttleHandler = throttle(this._scrollHandler.bind(this), 1000, {
-      leading: true,
-      trailing: false,
-    });
-    console.log(this._throttleHandler);
+
+    this.returnFunction = modFunc[this.settings.mode](
+      this._scrollHandler.bind(this),
+      this.settings.wait,
+      this.settings.options
+    );
   }
 
-  _scrollHandler() {
-    this.emit('scroll');
+  _scrollHandler(e) {
+    console.log(e);
+    this.emit('SCROLL');
   }
 
-  start() {
-    this.emit('start');
-    // this.settings.target.addEventListener('scroll', this._scrollHandler);
-    this.settings.target.addEventListener('scroll', this._throttleHandler);
+  addEvent() {
+    this.settings.target.addEventListener('scroll', this.returnFunction);
+    this.emit('ADD_EVENT');
   }
 
-  stop() {
-    this.emit('stop');
-    // this.settings.target.removeEventListener('scroll', this._scrollHandler);
-    this._throttleHandler.cancel();
+  removeEvent() {
+    this.settings.target.removeEventListener('scroll', this.returnFunction);
+    this.emit('REMOVE_EVENT');
   }
 }
+
+export default ScrollTracker;
