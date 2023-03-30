@@ -14,11 +14,11 @@
       // 若 mode 為 throttle，不建議 leading 和 trailing 都設為 false
       const st = new ScrollTracker({
         target: window,
-        mode: 'throttle', // trottle | debounce
-        wait: 1000,
+        mode: 'debounce', // trottle | debounce
+        wait: 100,
         options: {
           leading: true,
-          trailing: false,
+          trailing: true,
         },
       });
       st.on('ADD_EVENT', function () {
@@ -30,14 +30,14 @@
       });
 
       st.on('SCROLL', function (e) {
-        console.log('SCROLL', this);
+        // console.log('SCROLL', this);
       });
       console.log('scrollTracker:', st);
       st.addEvent();
 
-      setTimeout(() => {
-        st.removeEvent();
-      }, 3000);
+      // setTimeout(() => {
+      //   st.removeEvent();
+      // }, 3000);
     </script>
   </body>
 </html>

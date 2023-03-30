@@ -919,13 +919,13 @@ function throttle(func, wait, options) {
   });
 }
 
-// console.log('throttle:', throttle);
-// console.log('debounce:', debounce);
+// 備忘
+// window: 抓捲軸高用 window.scrollY 抓捲軸高用 window.
 const modFunc = {
   throttle,
   debounce,
 };
-console.log(modFunc);
+
 class ScrollTracker extends EventEmitter {
   static aa = 'aaaa';
   constructor(settings) {
@@ -936,6 +936,7 @@ class ScrollTracker extends EventEmitter {
       wait: 0,
     };
     this.settings = Object.assign({}, defaultSettings, settings);
+    this.target = this.settings.target;
 
     this.returnFunction = modFunc[this.settings.mode](
       this._scrollHandler.bind(this),
@@ -945,17 +946,17 @@ class ScrollTracker extends EventEmitter {
   }
 
   _scrollHandler(e) {
-    console.log(e);
+    console.log(Math.round(this.target.scrollY));
     this.emit('SCROLL');
   }
 
   addEvent() {
-    this.settings.target.addEventListener('scroll', this.returnFunction);
+    this.target.addEventListener('scroll', this.returnFunction);
     this.emit('ADD_EVENT');
   }
 
   removeEvent() {
-    this.settings.target.removeEventListener('scroll', this.returnFunction);
+    this.target.removeEventListener('scroll', this.returnFunction);
     this.emit('REMOVE_EVENT');
   }
 }
