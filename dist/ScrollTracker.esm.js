@@ -919,15 +919,12 @@ function throttle(func, wait, options) {
   });
 }
 
-// 備忘
-// window: 抓捲軸高用 window.scrollY 抓捲軸高用 window.
 const modFunc = {
   throttle,
   debounce,
 };
 
 class ScrollTracker extends EventEmitter {
-  static aa = 'aaaa';
   constructor(settings) {
     super();
 
