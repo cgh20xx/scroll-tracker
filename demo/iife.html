@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="./gen-fake-content.js"></script>
+    <div class="height-5000"></div>
     <script src="../dist/ScrollTracker.js"></script>
     <script>
       // 若 mode 為 throttle，不建議 leading 和 trailing 都設為 false
       const st = new ScrollTracker({
-        target: window,
+        target: window, // 目前限綁定 window 物件
         mode: 'throttle', // throttle | debounce
         wait: 500, // 限制最低為 100ms
         options: {

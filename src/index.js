@@ -42,7 +42,7 @@ class ScrollTracker extends EventEmitter {
   _scrollHandler(e) {
     // console.log(e);
     this.scrollY = Math.round(this.target.scrollY);
-    console.log(`scrollY: ${this.scrollY}`);
+    // console.log(`scrollY: ${this.scrollY}`);
     this.deltaY = this.scrollY - this.prevScrollY;
     this.direction = Math.sign(this.deltaY);
     // console.log('direction:', this.direction);
