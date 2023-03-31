@@ -15,7 +15,7 @@
       const st = new ScrollTracker({
         target: window,
         mode: 'throttle', // throttle | debounce
-        wait: 1000,
+        wait: 500, // 限制最低為 100ms
         options: {
           leading: true,
           trailing: false,
@@ -31,12 +31,14 @@
 
       st.on('SCROLL', function (e) {
         // 偵聽原生未被處理的 scroll 事件
-        console.log('SCROLL', e);
+        // console.log('SCROLL');
       });
 
       st.on('PROCESSED_SCROLL', function (e) {
         // 偵聽被處理過的 scroll 事件。(throttle | debounce)
-        console.log('PROCESSED_SCROLL', this);
+        // console.log('PROCESSED_SCROLL');
+        console.log('direction: ', this.direction);
+        console.log('deltaY: ', this.deltaY);
       });
       console.log('scrollTracker:', st);
       st.addEvent();

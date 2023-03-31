@@ -930,11 +930,17 @@ class ScrollTracker extends EventEmitter {
   static aa = 'aaaa';
   constructor(settings) {
     super();
+
+    // 強制鎖定 wait 不可小於 100，避免在可變更新率的螢幕畫面在更新太慢的情況下會重覆觸發 PROCESSED_SCROLL。
+    if (settings.wait !== undefined && settings.wait < 100) {
+      settings.wait = 100;
+    }
     const defaultSettings = {
       target: window,
       mode: 'throttle',
-      wait: 0,
+      wait: 100,
     };
+
     this.settings = Object.assign({}, defaultSettings, settings);
     this.target = this.settings.target;
     this.scrollY = 0;
@@ -953,18 +959,16 @@ class ScrollTracker extends EventEmitter {
   _scrollHandler(e) {
     // console.log(e);
     this.scrollY = Math.round(this.target.scrollY);
-    // console.log(`scrollY: ${this.scrollY}`);
-    const diffY = this.scrollY - this.prevScrollY;
-    this.direction = Math.sign(diffY);
+    console.log(`scrollY: ${this.scrollY}`);
+    this.deltaY = this.scrollY - this.prevScrollY;
+    this.direction = Math.sign(this.deltaY);
     // console.log('direction:', this.direction);
     this.prevScrollY = this.scrollY;
     this.emit('SCROLL', e);
   }
 
   _processedScrollHandler(e) {
-    const currentScrollY = Math.round(this.target.scrollY);
-    console.log(currentScrollY);
-    this.emit('PROCESSED_SCROLL');
+    this.emit('PROCESSED_SCROLL', e);
   }
 
   addEvent() {
