@@ -947,7 +947,7 @@ var ScrollTracker = (function () {
       this._scrollHandler = this._scrollHandler.bind(this);
 
       this.returnFunction = modFunc[this.settings.mode](
-        this._intervalScrollHandler.bind(this),
+        this._processedScrollHandler.bind(this),
         this.settings.wait,
         this.settings.options
       );
@@ -964,10 +964,10 @@ var ScrollTracker = (function () {
       this.emit('SCROLL', e);
     }
 
-    _intervalScrollHandler(e) {
+    _processedScrollHandler(e) {
       const currentScrollY = Math.round(this.target.scrollY);
       console.log(currentScrollY);
-      this.emit('INTERVAL_SCROLL');
+      this.emit('PROCESSED_SCROLL');
     }
 
     addEvent() {
