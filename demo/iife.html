@@ -34,9 +34,9 @@
         console.log('SCROLL', e);
       });
 
-      st.on('INTERVAL_SCROLL', function (e) {
+      st.on('PROCESSED_SCROLL', function (e) {
         // 偵聽被處理過的 scroll 事件。(throttle | debounce)
-        console.log('SCROLL', this);
+        console.log('PROCESSED_SCROLL', this);
       });
       console.log('scrollTracker:', st);
       st.addEvent();
