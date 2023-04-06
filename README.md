@@ -38,11 +38,11 @@
 
 **target: window**
 
-偵聽 scroll 事件的目標 (目前只支援 window 和 window.top)
+> 偵聽 scroll 事件的目標 (目前只支援 window 和 window.top)
 
 **settings: Object**
 
-同 new ScrollTracker(settins) 傳入的 settins 設定。
+> 同 new ScrollTracker(settins) 傳入的 settins 設定。
 
 ## Methods
 
