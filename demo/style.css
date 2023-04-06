@@ -4,5 +4,10 @@
 }
 .height-5000 {
   height: 5000px;
-  background: linear-gradient(180deg, rgba(0,153,255,1) 0%, rgba(0,255,153,1) 50%, rgba(255,153,0,1) 100%); 
+  background: linear-gradient(180deg, 
+    #c00 0%, 
+    #cc0 25%, 
+    #0c0 50%, 
+    #00c 75%, 
+    #c0c 100%); 
 }

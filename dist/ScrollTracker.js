@@ -922,6 +922,8 @@ var ScrollTracker = (function () {
     });
   }
 
+  // import { isWindow } from './utils';
+
   const modFunc = {
     throttle,
     debounce,
@@ -987,9 +989,7 @@ var ScrollTracker = (function () {
     }
 
     _scrollHandler(e) {
-      // console.log(e);
       this._scrollY = Math.round(this.target.scrollY);
-      // console.log(`scrollY: ${this._scrollY}`);
       this._deltaY = this._scrollY - this._prevScrollY;
       this._prevScrollY = this._scrollY;
       this.emit('SCROLL', e);

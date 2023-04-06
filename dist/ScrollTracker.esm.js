@@ -919,6 +919,8 @@ function throttle(func, wait, options) {
   });
 }
 
+// import { isWindow } from './utils';
+
 const modFunc = {
   throttle,
   debounce,
@@ -984,9 +986,7 @@ class ScrollTracker extends EventEmitter {
   }
 
   _scrollHandler(e) {
-    // console.log(e);
     this._scrollY = Math.round(this.target.scrollY);
-    // console.log(`scrollY: ${this._scrollY}`);
     this._deltaY = this._scrollY - this._prevScrollY;
     this._prevScrollY = this._scrollY;
     this.emit('SCROLL', e);
