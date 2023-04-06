@@ -10,7 +10,7 @@
   <body>
     <div class="height-5000"></div>
     <script src="./showDebugInfo.js"></script>
-    <script src="../dist/ScrollTracker.min.js"></script>
+    <script src="../dist/ScrollTracker.js"></script>
     <script>
       // 若 mode 為 throttle，不建議 leading 和 trailing 都設為 false
       const st = new ScrollTracker({
@@ -42,7 +42,7 @@
         showDebugInfo(st);
       });
 
-      st.track();
+      st.track(); // 開始追蹤捲軸
 
       console.log('scrollTracker:', st);
     </script>
