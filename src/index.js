@@ -79,16 +79,16 @@ class ScrollTracker extends EventEmitter {
     this.emit('PROCESSED_SCROLL', e);
   }
 
-  addEvent() {
+  track() {
     this.target.addEventListener('scroll', this._scrollHandler);
     this.target.addEventListener('scroll', this.returnFunction);
-    this.emit('ADD_EVENT');
+    this.emit('TRACK');
   }
 
-  removeEvent() {
+  untrack() {
     this.target.removeEventListener('scroll', this._scrollHandler);
     this.target.removeEventListener('scroll', this.returnFunction);
-    this.emit('REMOVE_EVENT');
+    this.emit('UNTRACK');
   }
 }
 

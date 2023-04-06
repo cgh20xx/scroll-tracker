@@ -23,13 +23,13 @@
         },
       });
 
-      st.on('ADD_EVENT', function () {
-        console.log('ADD_EVENT');
+      st.on('TRACK', function () {
+        console.log('TRACK');
         showDebugInfo(st);
       });
 
-      st.on('REMOVE_EVENT', function () {
-        console.log('REMOVE_EVENT');
+      st.on('UNTRACK', function () {
+        console.log('UNTRACK');
       });
 
       st.on('SCROLL', function (e) {
@@ -42,12 +42,9 @@
         showDebugInfo(st);
       });
 
-      st.addEvent();
+      st.track();
 
       console.log('scrollTracker:', st);
-      // setTimeout(() => {
-      //   st.removeEvent();
-      // }, 3000);
     </script>
   </body>
 </html>
