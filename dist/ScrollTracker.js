@@ -940,7 +940,7 @@ var ScrollTracker = (function () {
       const defaultSettings = {
         target: window,
         mode: 'throttle',
-        wait: 100,
+        wait: 500,
       };
 
       this.settings = Object.assign({}, defaultSettings, settings);
