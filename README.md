@@ -61,10 +61,10 @@
 > 捲動畫面的百分比，範圍為 0~1。
 ## Methods
 **track()**
->
+> 開始偵聽 scroll 事件。
 
 **untrack()**
-> 
+> 移除偵聽 scroll 事件。
 
 ## Events
 
