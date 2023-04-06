@@ -11,10 +11,10 @@
 ## Settings
 | Attributes | Default | Description | 
 | - | - | - |
-| target | window | 偵聽 scroll 事件的目標 (目前只支援 window 和 window.top) |
-| mode | 'throttle' | 使用節流模式或防抖模式 'throttle' \| 'debounce' |
+| [target] | window | 偵聽 scroll 事件的目標 (目前只支援 window 和 window.top) |
+| [mode] | 'throttle' | 使用節流模式或防抖模式 'throttle' \| 'debounce' |
 
-### 節流模式設定 throttle mode settings
+**節流模式設定 throttle mode settings**
 | Attributes | Default | Description | 
 | - | - | - |
 | [wait] | 500 | 節流的毫秒數，若低於 100 將強制為 100 |
@@ -22,7 +22,7 @@
 | [options.leading] | true | 指定調用在節流開始前 |
 | [options.trailing] | true | 指定調用在節流結束後 |
 
-### 防抖模式設定 debounce mode settings
+**防抖模式設定 debounce mode settings**
 | Attributes | Default | Description | 
 | - | - | - |
 | [wait] | 500 | 延遲的毫秒數，若低於 100 將強制為 100 |
@@ -37,14 +37,34 @@
 ## Members
 
 **target: window**
-
-> 偵聽 scroll 事件的目標 (目前只支援 window 和 window.top)
+> 偵聽 scroll 事件的目標。(目前只支援 window 和 window.top)
 
 **settings: Object**
-
 > 同 new ScrollTracker(settins) 傳入的 settins 設定。
 
+**scrollY**
+> 捲軸 Y 軸座標。
+
+**deltaY**
+> 捲軸 Y 軸座標的瞬間變化量。(與上次畫面更新時相比的變化量，未被 wait 影響。)
+
+**direction**
+> 捲動方向。1:向下捲 -1: 向上捲
+
+**scrollHeight**
+> 可捲動的高度。
+
+**scrollBarHeight**
+> 捲軸 Bar 的高度。
+
+**scrollRatio**
+> 捲動畫面的百分比，範圍為 0~1。
 ## Methods
+**track()**
+>
+
+**untrack()**
+> 
 
 ## Events
 
