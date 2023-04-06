@@ -9,16 +9,9 @@
   </head>
   <body>
     <div class="height-5000"></div>
+    <script src="./showDebugInfo.js"></script>
     <script src="../dist/ScrollTracker.js"></script>
     <script>
-      function consoleDebug(st) {
-        console.log('=======================');
-        console.log('direction: ', st.direction);
-        console.log('deltaY: ', st.deltaY);
-        console.log('scrollY', st.scrollY);
-        console.log('scrollRatio', st.scrollRatio);
-      }
-
       // 若 mode 為 throttle，不建議 leading 和 trailing 都設為 false
       const st = new ScrollTracker({
         target: window, // 目前限綁定 window 物件
@@ -40,18 +33,17 @@
 
       st.on('SCROLL', function (e) {
         // 偵聽原生未被處理的 scroll 事件
-        consoleDebug(st);
+        // showDebugInfo(st);
       });
 
       st.on('PROCESSED_SCROLL', function (e) {
         // 偵聽被處理過的 scroll 事件。(throttle | debounce)
-        // console.log('PROCESSED_SCROLL');
-        // consoleDebug(st);
+        showDebugInfo(st);
       });
-      console.log('scrollTracker:', st);
 
       st.addEvent();
 
+      console.log('scrollTracker:', st);
       // setTimeout(() => {
       //   st.removeEvent();
       // }, 3000);
