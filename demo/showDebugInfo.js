@@ -1,8 +1,6 @@
 const showDebugInfo = (function (window, document) {
   const div = document.createElement('div');
-  div.style =
-    'position: fixed; z-index: 99999; padding: 1rem 2rem; left: 0; top: 0';
-
+  div.classList.add('debug-info');
   document.body.appendChild(div);
   return function (st) {
     const template = `
