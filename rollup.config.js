@@ -13,11 +13,24 @@ const config = {
       sourcemap: true,
     },
     {
+      dir: 'dist',
+      entryFileNames: '[name].esm.min.js',
+      format: 'es', // ES Mdoule
+      plugins: [terser()],
+    },
+    {
       name: 'ScrollTracker', // global name under window
       dir: 'dist',
       entryFileNames: '[name].js',
       format: 'iife', // for browser]
       sourcemap: true,
+    },
+    {
+      name: 'ScrollTracker', // global name under window
+      dir: 'dist',
+      entryFileNames: '[name].min.js',
+      format: 'iife', // for browser]
+      plugins: [terser()],
     },
   ],
   plugins: [resolve()],
