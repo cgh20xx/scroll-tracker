@@ -30,6 +30,10 @@ st.on('PROCESSED_SCROLL', function (e) {
 st.track(); // 開始追蹤捲軸
 ```
 
+## Demo
+- [IIFE Demo](https://cgh20xx.github.io/scroll-tracker/demo/iife.html)
+- [ESM Demo](https://cgh20xx.github.io/scroll-tracker/demo/esm.html)
+
 ## API
 
 ### new ScrollTracker(settins)
