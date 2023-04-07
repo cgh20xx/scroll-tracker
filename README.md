@@ -36,50 +36,78 @@
 
 ## Members
 
-**target: window**
-> 偵聽 scroll 事件的目標。(目前只支援 window 和 window.top)
+`target`: window
 
-**settings: Object**
-> 同 new ScrollTracker(settins) 傳入的 settins 設定。
+偵聽 scroll 事件的目標。(目前只支援 window 和 window.top)
 
-**scrollY**
-> 捲軸 Y 軸座標。
 
-**deltaY**
-> 捲軸 Y 軸座標的瞬間變化量。(與上次畫面更新時相比的變化量，未被 wait 影響。)
+`settings`: Object
 
-**direction**
-> 捲動方向。1:向下捲 -1: 向上捲
+同 new ScrollTracker(settins) 傳入的 settins 設定。
 
-**scrollHeight**
-> 可捲動的高度。
 
-**scrollBarHeight**
-> 捲軸 Bar 的高度。
+`scrollY`: Number
 
-**scrollRatio**
-> 捲動畫面的百分比，範圍為 0~1。
+捲軸 Y 軸座標。
+
+
+`deltaY`: Number
+
+捲軸 Y 軸座標的瞬間變化量。(與上次畫面更新時相比的變化量，未被 wait 影響。)
+
+
+`direction`: Number
+
+捲動方向。1:向下捲 -1: 向上捲
+
+
+`scrollHeight`: Number
+
+可捲動的高度。
+
+
+`scrollBarHeight`: Number
+
+捲軸 Bar 的高度。
+
+
+`scrollRatio`: Number
+
+捲動畫面的百分比，範圍為 0~1。
+
 ## Methods
 
-**track()**
-> 開始偵聽 scroll 事件。
+`track()`: Void
 
-**untrack()**
-> 移除偵聽 scroll 事件。
+開始偵聽 scroll 事件。
+
+
+`untrack()`: Void
+
+移除偵聽 scroll 事件。
+
 
 ## Events
 
-**SCROLL**
-> 偵聽未被處理過的 scroll 事件，同 window.addEventListener('scroll', function (e) {})。
+`SCROLL`
 
-**PROCESSED_SCROLL**
-> 偵聽被處理過的 scroll 事件 (throttle or debounce)
+偵聽未被處理過的 scroll 事件，同 window.addEventListener('scroll', function (e) {})。
 
-**TRACK**
-> 偵聽當執行 track() 後會被觸發的事件。
 
-**UNTRACK**
-> 偵聽當執行 untrack() 後會被觸發的事件。
+`PROCESSED_SCROLL`
+
+偵聽被處理過的 scroll 事件 (throttle or debounce)
+
+
+`TRACK`
+
+偵聽當執行 track() 後會被觸發的事件。
+
+
+`UNTRACK`
+
+偵聽當執行 untrack() 後會被觸發的事件。
+
 
 ```js
 const st = new ScrollTracker({
