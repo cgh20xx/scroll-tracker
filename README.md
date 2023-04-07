@@ -2,6 +2,33 @@
 
 這是一個偵測頁面捲軸的套件，可設定偵聽 scroll 事件使用節流或防抖模式，並可計算捲動置、捲軸高度、捲動百分比等資訊。
 
+提供 IIFE 及 ESM 的 js 檔，請至 dist folder 自行選用。
+
+## Usage
+
+```js
+const st = new ScrollTracker({
+  target: window, // 目前限綁定 window 物件
+  mode: 'throttle', // throttle | debounce
+  wait: 500, // 限制最低為 100ms
+  options: {
+    leading: true,
+    trailing: false,
+  },
+});
+
+st.on('PROCESSED_SCROLL', function (e) {
+  // 偵聽被處理過的 scroll 事件。(throttle | debounce)
+  console.log('scrollY:', st.scrollY)
+  console.log('deltaY:', st.deltaY)
+  console.log('direction:', st.direction)
+  console.log('scrollHeight:', st.scrollHeight)
+  console.log('scrollBarHeight:', st.scrollBarHeight)
+  console.log('scrollRatio:', st.scrollRatio)
+});
+
+st.track(); // 開始追蹤捲軸
+```
 
 ## API
 
@@ -112,20 +139,7 @@
 
 偵聽當執行 untrack() 後會被觸發的事件。
 
-## Demo
-
-```js
-const st = new ScrollTracker({
-  target: window, // 目前限綁定 window 物件
-  mode: 'throttle', // throttle | debounce
-  wait: 500, // 限制最低為 100ms
-  options: {
-    leading: true,
-    trailing: false,
-  },
-});
-```
-
+---
 
 
 > 本套件節流及防抖功能是使用 Lodash，詳細說明可參考官方文件 [_.throttle](https://www.lodashjs.com/docs/lodash.throttle)、[_.debounce](https://www.lodashjs.com/docs/lodash.debounce)
