@@ -60,6 +60,7 @@
 **scrollRatio**
 > 捲動畫面的百分比，範圍為 0~1。
 ## Methods
+
 **track()**
 > 開始偵聽 scroll 事件。
 
@@ -67,6 +68,18 @@
 > 移除偵聽 scroll 事件。
 
 ## Events
+
+**SCROLL**
+> 偵聽未被處理過的 scroll 事件，同 window.addEventListener('scroll', function (e) {})。
+
+**PROCESSED_SCROLL**
+> 偵聽被處理過的 scroll 事件 (throttle or debounce)
+
+**TRACK**
+> 偵聽當執行 track() 後會被觸發的事件。
+
+**UNTRACK**
+> 偵聽當執行 untrack() 後會被觸發的事件。
 
 ```js
 const st = new ScrollTracker({
