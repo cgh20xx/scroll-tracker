@@ -1,8 +1,7 @@
 # ScrollTracker
 
-這是一個偵測頁面捲軸的套件。
+這是一個偵測頁面捲軸的套件，可設定偵聽 scroll 事件使用節流或防抖模式，並可計算捲動置、捲軸高度、捲動百分比等資訊。
 
-由於節流及防抖核心是使用 Lodash 詳細說明可參考官方文件 [_.throttle](https://www.lodashjs.com/docs/lodash.throttle)、[_.debounce](https://www.lodashjs.com/docs/lodash.debounce)
 
 ## API
 
@@ -43,7 +42,7 @@
 
 `settings`: Object
 
-同 new ScrollTracker(settins) 傳入的 settins 設定。
+相當於 new ScrollTracker(settins) 傳入的 settins 設定。(含預設值)
 
 
 `scrollY`: Number
@@ -74,6 +73,11 @@
 `scrollRatio`: Number
 
 捲動畫面的百分比，範圍為 0~1。
+
+
+`returnFunction`: Function
+
+依 mode 不同，返回對應的節流函式或防抖函式。該函式提供一個 cancel 方法取消延遲的函式調用以及 flush 方法立即調用。
 
 ## Methods
 
@@ -108,6 +112,7 @@
 
 偵聽當執行 untrack() 後會被觸發的事件。
 
+## Demo
 
 ```js
 const st = new ScrollTracker({
@@ -120,3 +125,8 @@ const st = new ScrollTracker({
   },
 });
 ```
+
+
+
+> 本套件節流及防抖功能是使用 Lodash，詳細說明可參考官方文件 [_.throttle](https://www.lodashjs.com/docs/lodash.throttle)、[_.debounce](https://www.lodashjs.com/docs/lodash.debounce)
+
