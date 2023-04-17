@@ -1,4 +1,4 @@
-import { EventEmitter } from './eventemitter3';
+import { EventEmitter } from 'eventemitter3';
 import { throttle, debounce } from 'lodash-es';
 // import { isWindow } from './utils';
 

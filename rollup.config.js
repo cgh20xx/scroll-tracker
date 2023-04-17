@@ -1,5 +1,6 @@
 import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 const config = {
   input: {
@@ -15,7 +16,7 @@ const config = {
     {
       dir: 'dist',
       entryFileNames: '[name].esm.min.js',
-      format: 'es', // ES Mdoule
+      format: 'es', // ES Module
       plugins: [terser()],
     },
     {
@@ -33,9 +34,11 @@ const config = {
       plugins: [terser()],
     },
   ],
-  plugins: [resolve()],
-  // plugins: [resolve(), terser()],
-  // external: [''],
+  plugins: [
+    resolve(), // 使 Rollup 能找到外部的 npm 模組
+    commonjs(), // 使 Rollup 能將 CommonJS Module 轉換成 ES Module
+  ],
+  // external: ['lodash-es', 'eventemitter3'], // 外部模組不會被打包，需額外設定 output.globals
 };
 
 export default config;
