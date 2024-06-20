@@ -7,15 +7,26 @@
 ## Usage
 
 ```js
+// 節流模式設定
 const st = new ScrollTracker({
   target: window, // 目前限綁定 window 物件
-  mode: 'throttle', // throttle | debounce
+  mode: 'throttle',
   wait: 500, // 限制最低為 100ms
   options: {
-    leading: true,
-    trailing: false,
+    leading: true, // throttle 專用設定：是否在開始時立即調用
+    trailing: false, // throttle 專用設定：是否在結束時調用
   },
 });
+
+// 防抖模式設定
+// const st = new ScrollTracker({
+//   target: window, // 目前限綁定 window 物件
+//   mode: 'debounce',
+//   wait: 500, // 限制最低為 100ms
+//   options: {
+//     immediate: true // debounce 專用設定：是否在開始立即調用
+//   },
+// });
 
 st.on('PROCESSED_SCROLL', function (e) {
   // 偵聽被處理過的 scroll 事件。(throttle | debounce)
@@ -36,7 +47,7 @@ st.track(); // 開始追蹤捲軸
 
 ## API
 
-### new ScrollTracker(settins)
+### new ScrollTracker(settings)
 
 ## Settings
 | Attributes | Default | Description | 
@@ -57,11 +68,9 @@ st.track(); // 開始追蹤捲軸
 | - | - | - |
 | [wait] | 500 | 延遲的毫秒數，若低於 100 將強制為 100 |
 | [options] |  | 防抖模式的 options |
-| [options.leading] | false | 指定調用在防抖開始前 |
-| [options.trailing] | true | 指定調用在防抖結束後 |
-| [options.maxWait] | 0 | 允許被延遲的最大值 |
+| [options.immediate] | false | 指定調用在防抖開始前 |
 
-## Extentds
+## Extends
 -  EventEmitter
 
 ## Members
@@ -73,7 +82,7 @@ st.track(); // 開始追蹤捲軸
 
 `settings`: Object
 
-相當於 new ScrollTracker(settins) 傳入的 settins 設定。(含預設值)
+相當於 new ScrollTracker(settings) 傳入的 settings 設定。(含預設值)
 
 
 `scrollY`: Number
@@ -145,6 +154,4 @@ st.track(); // 開始追蹤捲軸
 
 ---
 
-
-> 本套件節流及防抖功能是使用 Lodash，詳細說明可參考官方文件 [_.throttle](https://www.lodashjs.com/docs/lodash.throttle)、[_.debounce](https://www.lodashjs.com/docs/lodash.debounce)
 
