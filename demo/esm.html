@@ -18,10 +18,19 @@
         mode: 'throttle', // throttle | debounce
         wait: 500, // 限制最低為 100ms
         options: {
-          leading: true,
-          trailing: false,
+          leading: true, // throttle 專用設定：是否在開始時立即調用
+          trailing: false, // throttle 專用設定：是否在結束時調用
         },
       });
+
+      // const st = new ScrollTracker({
+      //   target: window, // 目前限綁定 window 物件
+      //   mode: 'debounce', // throttle | debounce
+      //   wait: 500, // 限制最低為 100ms
+      //   options: {
+      //     immediate: true, // debounce 專用設定：是否在開始立即調用
+      //   },
+      // });
 
       st.on('TRACK', function () {
         console.log('TRACK');

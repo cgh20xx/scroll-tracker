@@ -1,6 +1,6 @@
 import { EventEmitter } from 'eventemitter3';
-import { throttle, debounce } from 'lodash-es';
-// import { isWindow } from './utils';
+import { throttle, debounce } from './utils';
+
 
 const modFunc = {
   throttle,
@@ -29,12 +29,38 @@ class ScrollTracker extends EventEmitter {
     this._direction = 0; // 1:向下捲 0:沒捲 -1: 向上捲
 
     this._scrollHandler = this._scrollHandler.bind(this);
-
-    this.returnFunction = modFunc[this.settings.mode](
-      this._processedScrollHandler.bind(this),
-      this.settings.wait,
-      this.settings.options
-    );
+    
+    if (this.settings.mode === 'throttle') {
+      const throttleOptions = {};
+      if (settings.options) {
+        throttleOptions.leading = settings.options.leading;
+        throttleOptions.trailing = settings.options.trailing;
+        this.returnFunction = modFunc[this.settings.mode](
+          this._processedScrollHandler.bind(this),
+          this.settings.wait,
+          throttleOptions
+        );
+      } else {
+        this.returnFunction = modFunc[this.settings.mode](
+          this._processedScrollHandler.bind(this),
+          this.settings.wait
+        );
+      }
+      this.returnFunction = modFunc[this.settings.mode](
+        this._processedScrollHandler.bind(this),
+        this.settings.wait,
+        throttleOptions
+      );
+      
+    } else if (this.settings.mode === 'debounce') {
+      this.returnFunction = modFunc[this.settings.mode](
+        this._processedScrollHandler.bind(this),
+        this.settings.wait,
+        settings.options?.immediate
+      );
+    } else {
+      console.error('[ScrollTracer] mode should be throttle or debounce');
+    }
   }
 
   get scrollY() {
